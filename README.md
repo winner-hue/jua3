@@ -8,12 +8,13 @@ install:
   下载jar包，通过 add as library 导入项目
 
 - 通过pom导入
-    <dependency>
-        <groupId>icu.fanjie</groupId>
-        <artifactId>jua3</artifactId>
-        <version>1.3</version>
-    </dependency>
-    
+    ```maven
+      <dependency>
+          <groupId>icu.fanjie</groupId>
+          <artifactId>jua3</artifactId>
+          <version>1.3</version>
+      </dependency>  
+  ```
 - jar包引入
   参考 https://www.cnblogs.com/zhaochi/p/12694275.html
 
