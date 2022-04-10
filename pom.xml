@@ -16,8 +16,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-        <github.global.server>github</github.global.server>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>icu-fanjie-repo</id>
+            <url>https://raw.githubusercontent.com/winner-hue/mvn-repo/master/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -25,6 +31,11 @@
             <artifactId>junit</artifactId>
             <version>4.11</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>icu.fanjie</groupId>
+            <artifactId>requests</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 
@@ -60,9 +71,6 @@
                 <plugin>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.8.2</version>
-                    <configuration>
-                        <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/repository</altDeploymentRepository>
-                    </configuration>
                 </plugin>
                 <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
                 <plugin>
@@ -73,54 +81,6 @@
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>3.0.0</version>
                 </plugin>
-
-
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>2.2.1</version>
-                    <executions>
-                        <execution>
-                            <id>attach-sources</id>
-                            <goals>
-                                <goal>jar-no-fork</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>com.github.github</groupId>
-                    <artifactId>site-maven-plugin</artifactId>
-                    <version >0.12</version>
-                    <configuration>
-                        <message >Maven artifacts for ${project.version}</message>
-                        <noJekyll>true</noJekyll>
-                        <!--本地jar地址-->
-                        <outputDirectory>${project.build.directory}/repository</outputDirectory>
-                        <!--分支-->
-                        <branch>refs/heads/master</branch>
-                        <merge>true</merge>
-
-                        <includes>
-                            <include>**/*</include>
-                        </includes>
-                        <!--对应github上创建的仓库名称 name-->
-                        <repositoryName>jua3</repositoryName>
-                        <!--github 仓库所有者 不是账号-->
-                        <repositoryOwner>winner-hue</repositoryOwner>
-                    </configuration>
-
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>site</goal>
-                            </goals>
-                            <phase>deploy</phase>
-                        </execution>
-                    </executions>
-                </plugin>
-
             </plugins>
         </pluginManagement>
     </build>
