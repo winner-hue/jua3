@@ -1,10 +1,11 @@
 package icu.fanjie;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class JUA {
+public class JUA implements Serializable {
     private final Random random = new Random();
     private final String[] userAgents = {
             "chrome", "firefox", "opera", "safari"

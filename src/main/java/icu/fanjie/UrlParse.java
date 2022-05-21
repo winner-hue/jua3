@@ -1,8 +1,9 @@
 package icu.fanjie;
 
+import java.io.Serializable;
 import java.net.URL;
 
-public class UrlParse {
+public class UrlParse implements Serializable {
     public static String urlJoin(String baseUrl, String url) {
         if (baseUrl == null || baseUrl.equals("")) {
             return "";
